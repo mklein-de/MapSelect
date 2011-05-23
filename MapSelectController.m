@@ -59,7 +59,7 @@
     NSInteger selection_index = [volumesController selectionIndex];
     NSMutableArray *dirs = [NSMutableArray array];
 
-    if (selection_index == INT_MAX)
+    if (selection_index == NSNotFound)
     {
         [mapsController setContent:dirs];
         return;
@@ -122,7 +122,7 @@
     else
     {
         [mapsController setSelectionIndex:-1];
-        selected_index = INT_MAX;
+        selected_index = NSNotFound;
         if (activeMap != nil)
         {
             NSLog(@"skipping directory: %@", activeMap);
@@ -148,7 +148,7 @@
     
     NSLog(@"activate %@ (%d)", map, selection_index);
     
-    if (selection_index != INT_MAX && [map isEqualToString:activeMap])
+    if (selection_index != NSNotFound && [map isEqualToString:activeMap])
     {
         return;
     }
@@ -169,7 +169,7 @@
         }
     }
 
-    if (selection_index != INT_MAX)
+    if (selection_index != NSNotFound)
     {
         if (![fm moveItemAtPath:[[path stringByAppendingPathComponent:map] stringByAppendingPathComponent:@"gmapsupp.img"]
                          toPath:[path stringByAppendingPathComponent:@"gmapsupp.img"]
