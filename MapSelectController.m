@@ -16,6 +16,12 @@
     [self updateVolumes:nil];
 }
 
+- (NSSortDescriptor*)mapSortDescriptor
+{
+    NSSortDescriptor * sd = [[NSSortDescriptor alloc] initWithKey:@"mapName" ascending:YES];
+    return [NSArray arrayWithObject:[sd autorelease]];
+}
+
 - (void)awakeFromNib
 {
     NSNotificationCenter * nc = [[NSWorkspace sharedWorkspace] notificationCenter];
@@ -36,9 +42,16 @@
 
 - (IBAction)updateVolumes:(id)sender
 {
-    NSArray * volumes = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
+    NSArray * volumePaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
+    NSMutableArray * volumes = [NSMutableArray array];
+    NSEnumerator * e = [volumePaths objectEnumerator];
+    NSObject * o;
+    while ((o = [e nextObject]) != nil)
+    {
+        [volumes addObject:[NSDictionary dictionaryWithObject:o forKey:@"volumePath"]];
+    }
     [volumesController setContent:volumes];
-    [self updateMaps:self];
+    [self updateMaps:nil];
 }
 
 - (IBAction)updateMaps:(id)sender
@@ -52,7 +65,7 @@
         return;
     }
     
-    NSString * volume = [volumesController valueForKeyPath:@"selection.self"];
+    NSString * volume = [volumesController valueForKeyPath:@"selection.volumePath"];
     NSString * path = [volume stringByAppendingPathComponent:@"GARMIN"];
     NSFileManager * fm = [NSFileManager defaultManager];
 
@@ -77,7 +90,7 @@
         {
             if ([fm fileExistsAtPath:[dir stringByAppendingPathComponent:@"gmapsupp.img"]])
             {
-                [dirs addObject:o];
+                [dirs addObject:[NSDictionary dictionaryWithObject:o forKey:@"mapName"]];
             }
             else
             {
@@ -95,16 +108,11 @@
     
     NSInteger selected_index;
     
-    [dirs sortUsingSelector:@selector(caseInsensitiveCompare:)];
-
     if (gmapsupp_found)
     {
         if (activeMap != nil)
         {
-            [dirs addObject:activeMap];
-            [dirs sortUsingSelector:@selector(caseInsensitiveCompare:)];
-            
-            selected_index = [dirs indexOfObject:activeMap];
+            [dirs addObject:[NSDictionary dictionaryWithObject:activeMap forKey:@"mapName"]];
         }
         else
         {
@@ -128,14 +136,14 @@
 
 - (IBAction)ejectVolume:(id)sender
 {
-    NSString * volume = [volumesController valueForKeyPath:@"selection.self"];
+    NSString * volume = [volumesController valueForKeyPath:@"selection.volumePath"];
     [[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath:volume];
 }
 
 - (IBAction)activateMap:(id)sender
 {
-    NSString * volume = [volumesController valueForKeyPath:@"selection.self"];
-    NSString * map = [mapsController valueForKeyPath:@"selection.self"];
+    NSString * volume = [volumesController valueForKeyPath:@"selection.volumePath"];
+    NSString * map = [mapsController valueForKeyPath:@"selection.mapName"];
     NSInteger selection_index = [mapsController selectionIndex];
     
     NSLog(@"activate %@ (%d)", map, selection_index);
