@@ -106,8 +106,6 @@
         }
     }
     
-    NSInteger selected_index;
-    
     if (gmapsupp_found)
     {
         if (activeMap != nil)
@@ -118,20 +116,18 @@
         {
             NSLog(@"no empty directory for active map");
         }
+        [mapsController setContent:dirs];
     }
     else
     {
-        [mapsController setSelectionIndex:-1];
-        selected_index = NSNotFound;
+        [mapsController setContent:dirs];
+        [mapsController setSelectionIndex:NSNotFound];
         if (activeMap != nil)
         {
             NSLog(@"skipping directory: %@", activeMap);
             activeMap = nil;
         }
     }
-    
-    [mapsController setContent:dirs];
-    [mapsController setSelectionIndex:selected_index];
 }
 
 - (IBAction)ejectVolume:(id)sender
