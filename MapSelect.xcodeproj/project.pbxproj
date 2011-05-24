@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		4C64DBC6138870F8007F842D /* MapSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64DBC5138870F8007F842D /* MapSelectController.m */; };
 		4C8C503E1389C598009A7FED /* MapArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C503D1389C598009A7FED /* MapArrayController.m */; };
+		4CD56949138AF67C0016C6E6 /* VolumeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD56948138AF67C0016C6E6 /* VolumeInfo.m */; };
+		4CD56A9B138C41660016C6E6 /* MapSelectAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD56A9A138C41660016C6E6 /* MapSelectAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -24,10 +25,12 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* MapSelect_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSelect_Prefix.pch; sourceTree = "<group>"; };
-		4C64DBC4138870F8007F842D /* MapSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSelectController.h; sourceTree = "<group>"; };
-		4C64DBC5138870F8007F842D /* MapSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSelectController.m; sourceTree = "<group>"; };
 		4C8C503C1389C598009A7FED /* MapArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapArrayController.h; sourceTree = "<group>"; };
 		4C8C503D1389C598009A7FED /* MapArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapArrayController.m; sourceTree = "<group>"; };
+		4CD56947138AF67C0016C6E6 /* VolumeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeInfo.h; sourceTree = "<group>"; };
+		4CD56948138AF67C0016C6E6 /* VolumeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeInfo.m; sourceTree = "<group>"; };
+		4CD56A99138C41660016C6E6 /* MapSelectAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSelectAppDelegate.h; sourceTree = "<group>"; };
+		4CD56A9A138C41660016C6E6 /* MapSelectAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSelectAppDelegate.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MapSelect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSelect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -47,10 +50,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4C64DBC4138870F8007F842D /* MapSelectController.h */,
-				4C64DBC5138870F8007F842D /* MapSelectController.m */,
+				4CD56A99138C41660016C6E6 /* MapSelectAppDelegate.h */,
+				4CD56A9A138C41660016C6E6 /* MapSelectAppDelegate.m */,
 				4C8C503C1389C598009A7FED /* MapArrayController.h */,
 				4C8C503D1389C598009A7FED /* MapArrayController.m */,
+				4CD56947138AF67C0016C6E6 /* VolumeInfo.h */,
+				4CD56948138AF67C0016C6E6 /* VolumeInfo.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -177,8 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				4C64DBC6138870F8007F842D /* MapSelectController.m in Sources */,
 				4C8C503E1389C598009A7FED /* MapArrayController.m in Sources */,
+				4CD56949138AF67C0016C6E6 /* VolumeInfo.m in Sources */,
+				4CD56A9B138C41660016C6E6 /* MapSelectAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
