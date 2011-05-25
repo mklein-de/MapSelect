@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="372"/>
+			<integer value="371"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -729,7 +729,7 @@
 				<string key="NSName">_NSMainMenu</string>
 			</object>
 			<object class="NSWindowTemplate" id="972006081">
-				<int key="NSWindowStyleMask">15</int>
+				<int key="NSWindowStyleMask">13</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{335, 488}, {232, 89}}</string>
 				<int key="NSWTFlags">1946157056</int>
@@ -2684,7 +2684,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">776</int>
+			<int key="maxID">785</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
