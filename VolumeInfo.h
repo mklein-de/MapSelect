@@ -18,7 +18,7 @@
 }
 
 - (id)initWithPath:(NSString*)p;
-- (void)findMaps;
+- (BOOL)findMaps;
 - (void)activateMap:(NSString*)map;
 
 + (id)volumeInfoWithPath:(NSString*)p;

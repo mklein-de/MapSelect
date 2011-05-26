@@ -15,7 +15,9 @@
 - (void)volumeDidMount:(NSNotification*)notification
 {
     NSString * path = [[notification userInfo] objectForKey:@"NSDevicePath"];
-    [volumesController addObject:[VolumeInfo volumeInfoWithPath:path]];
+    VolumeInfo * volume = [VolumeInfo volumeInfoWithPath:path];
+    if (volume != nil)
+        [volumesController addObject:volume];
 }
 
 - (void)volumeDidUnmount:(NSNotification*)notification
@@ -63,11 +65,13 @@
 
     NSArray * volumePaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
     NSEnumerator * e = [volumePaths objectEnumerator];
-    NSString * o;
+    NSString * path;
 
-    while ((o = [e nextObject]) != nil)
+    while ((path = [e nextObject]) != nil)
     {
-        [volumesController addObject:[VolumeInfo volumeInfoWithPath:o]];
+        VolumeInfo * volume = [VolumeInfo volumeInfoWithPath:path];
+        if (volume != nil)
+            [volumesController addObject:volume];
     }
 
     [volumesController addObserver:self forKeyPath:@"selection.currentMap" options:0 context:nil];

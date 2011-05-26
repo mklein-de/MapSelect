@@ -25,19 +25,30 @@
     if ((self = [super init]) != nil)
     {
         [self setVolumePath:p];
-        [self findMaps];
+        if (![self findMaps])
+        {
+            [self release];
+            return nil;
+        }
     }
     
     return self;
 }
 
-- (void)findMaps
+- (BOOL)findMaps
 {
     NSFileManager * fm = [NSFileManager defaultManager];
 
     NSMutableArray *dirs = [NSMutableArray array];
     NSString * path = [volumePath stringByAppendingPathComponent:@"GARMIN"];
     NSArray * dc = [fm directoryContentsAtPath:path];
+
+    BOOL isDir;
+
+    if (!([fm fileExistsAtPath:path isDirectory:&isDir] && isDir))
+    {
+        return NO;
+    }
     
     NSEnumerator * e = [dc objectEnumerator];
     NSString * o;
@@ -47,7 +58,6 @@
 
     while ((o = [e nextObject]) != nil)
     {
-        BOOL isDir;
         NSString * dir = [path stringByAppendingPathComponent:o];
  
         if ([o caseInsensitiveCompare:@"gmapsupp.img"] == NSOrderedSame)
@@ -94,6 +104,7 @@
     }
 
     [self setMaps:dirs];
+    return YES;
 }
 
 - (void)activateMap:(NSString*)map
